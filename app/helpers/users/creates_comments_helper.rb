@@ -1,0 +1,2 @@
+module Users::CreatesCommentsHelper
+end

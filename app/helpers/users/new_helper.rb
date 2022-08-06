@@ -1,0 +1,2 @@
+module Users::NewHelper
+end
