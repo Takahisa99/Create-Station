@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
-  root to: 'home#top'
   devise_for :users
 
-  namespace :users do
+  root to: 'homes#top'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
+  namespace :public do
+    resources :users, only:[:index, :show, :create, :edit, :update ]
     resources :creates, only:[:index, :new, :show, :create, :edit, :update, :destroy]
     resources :creates_comments, only: [:index, :show, :create]
     resources :favorites, only:[:show, :index]
-
   end
+
+
   namespace :admin do
     get 'index/edit'
     get 'index/show'

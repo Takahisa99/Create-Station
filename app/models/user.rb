@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   #いいね機能
   has_many :favorites, dependent: :destroy
-  validates_uniqueness_of :create_id, scope: :user_id
+
 
 
 end

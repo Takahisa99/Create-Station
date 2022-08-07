@@ -27,21 +27,26 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+
+
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', public_user_path(current_user.id), class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark' %>
+              <%= link_to '作品投稿', new_public_create_path, class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>
+              <%= link_to '作品一覧', public_users_path, class: "btn btn-outline-light mr-4" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light mr-4" %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light mr-4" %>
             </li>
             <% end %>
             </ul>
