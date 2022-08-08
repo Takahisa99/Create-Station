@@ -30,13 +30,13 @@
 
 
             <li class="nav-item">
-              <%= link_to 'マイページ', public_user_path(current_user.id), class: "btn btn-outline-light mr-4" %>
+              <%= link_to 'マイページ', public_user_path(current_user), class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
               <%= link_to '作品投稿', new_public_create_path, class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
-              <%= link_to '作品一覧', public_users_path, class: "btn btn-outline-light mr-4" %>
+              <%= link_to '作品一覧', public_creates_path, class: "btn btn-outline-light mr-4" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light mr-4" %>

@@ -16,11 +16,16 @@
   </div>
 
   <div class="row">
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+  </div>
+
+
+  <div class="row">
     <% @creates.each do |create| %>
       <div class="col-4">
         <div class="card">
           <%= link_to public_creates_path(create), class:"card-body" do %>
-            <%#= image_tag item.get_image(250,250), class:"card-img-top" %><br>
+            <%= image_tag create.get_image(250,250), class:"card-img-top" %><br>
           <% end %>
           <div class="card-body">
             <strong><%= create.name %></strong><br>

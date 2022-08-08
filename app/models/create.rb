@@ -5,9 +5,9 @@ class Create < ApplicationRecord
   belongs_to :user
 
 #コメント機能
-  has_many :creates_comments, dependent: :destroy
+  #has_many :creates_comments, dependent: :destroy
 #いいね機能
-  has_many :favorites, dependent: :destroy
+  #has_many :favorites, dependent: :destroy
 
   # 検索方法分岐
   def self.looks(search, word)
@@ -25,9 +25,17 @@ class Create < ApplicationRecord
   end
 
 
+  validates :name,presence:true
+  validates :introduction,presence:true,length:{maximum:200}
 
 
-
+  def get_image(width,height)
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    image
+  end
 
 
 end

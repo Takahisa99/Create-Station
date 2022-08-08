@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
 
-  before_action :ensure_correct_user, only: [:update,:edit]
+  #before_action :ensure_correct_user, only: [:update,:edit]
 
 #会員の一覧
 
@@ -26,11 +26,22 @@ class Public::UsersController < ApplicationController
 
 #会員の情報更新
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice]="更新しました！"
+      redirect_to public_user_path(@user)
+    else
+      render :edit
+    end
   end
 
+
+   private
+
   def user_params
-    params.require(:user).permit(:name, :introduction )
+    params.require(:user).permit(:name, :email, :profile_image)
   end
+
 
 
 end
