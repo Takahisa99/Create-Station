@@ -39,6 +39,15 @@ class Public::UsersController < ApplicationController
     end
   end
 
+#いいね一覧
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:create_id)
+    @favorite_creates = Create.find(favorites)
+  end
+
+
+
 
    private
 

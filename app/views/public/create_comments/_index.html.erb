@@ -3,15 +3,14 @@
   <p>コメント件数：<%= create.create_comments.count %></p>
     <% create.create_comments.each do |create_comment| %>
     <tr>
-        <td><%if create_comment.user == current_user %>  </td>
-
+        <td>
               <%= link_to public_user_path(create_comment.user) do  %>
               <%= image_tag create_comment.user.get_profile_image(100,100)  %><br>
               <%= create_comment.user.name %>
               <% end %>
-
-
             <%= create_comment.created_at.strftime('%Y/%m/%d') %><%= create_comment.comment %>
+  <!--ログインしているユーザーのみ表示-->
+            <%if create_comment.user == current_user %>
             <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
             <% end %>
         </td>

@@ -18,13 +18,13 @@ class Create < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @create = Create.where("title LIKE?","#{word}")
+      @create = Create.where("name LIKE?","#{word}")
     elsif search == "forward_match"
-      @create = Create.where("title LIKE?","#{word}%")
+      @create = Create.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @create = Createk.where("title LIKE?","%#{word}")
+      @create = Createk.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @create = Create.where("title LIKE?","%#{word}%")
+      @create = Create.where("name LIKE?","%#{word}%")
     else
       @create = Create.all
     end

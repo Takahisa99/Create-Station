@@ -16,7 +16,8 @@ class Public::CreatesController < ApplicationController
     @create = Create.find(params[:id])
     @creates = Create.all
     @create_comment = CreateComment.new
-    @user = @create.user
+    #@user = @create.user
+    @user = User.find(@create.user_id)
   end
 
 #新規投稿

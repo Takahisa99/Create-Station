@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get "/about"=>"homes#about"
 
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
@@ -11,11 +12,21 @@ Rails.application.routes.draw do
 
   namespace :public do
 
-    resources :users, only:[:index, :show, :create, :edit, :update ]
+    resources :users, only:[:index, :show, :create, :edit, :update ] do
+      member do
+        get :favorites
+      end
+
+      # get "users/:id/favorites" => "users#favorites"
+    end
     resources :creates, only:[:index, :new, :show, :create, :edit, :update, :destroy] do
      resources :create_comments, only: [:create, :destroy ]
-     end
-    resources :favorites, only:[:create, :destroy]
+     resources :favorites, only:[:create, :destroy, :index ]
+
+    end
+    get  "/searches" => "searches#search"
+
+
   end
 
 

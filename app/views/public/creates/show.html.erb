@@ -3,36 +3,41 @@
 
        <h2 class="mt-4"><strong><%= @create.name %></strong></h2><br>
 
-
       <div class="row">
-        <div class="col-4 mb-4">
+        <div class="col-md-8 offset-md-1">
           <div class="card-group">
-
               <%= link_to public_creates_path(@create), class:"card-img-top" do %>
                 <%= image_tag @create.get_image(250,250), class:"card-img-top" %><br>
               <% end %>
-
           </div>
         </div>
-      </div>
+      </div><br>
 
       <div class="col-4 mb-4">
         <div class="card-group">
          <h4>作品紹介</h4>
+                 <div>
+                  <% if @create.user == current_user %>
+                  <% else %>
+
+                      <%= @user.name %>さんの投稿
+                  <% end %>
+                 </div>
              <div><br>
                   <%= simple_format(@create.introduction) %>
              </div>
         </div>
       </div>
 
-
       <div class="col-5 mb-5">
         <div class="card-group">
           <div class="card">
+<!--ログインしているユーザーのみ表示-->
             <% if @create.user == current_user %>
                <%= link_to "編集", edit_public_create_path(@create), class:"btn btn-success btn-block" %>
                <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger"%>
                <%= link_to "戻る", public_user_path(current_user), class:"btn btn-primary btn-block" %>
+<!--ログインしていないユーザー-->
             <% else @create.user %>
                  <%= link_to "戻る", public_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", public_user_path(@user), class:"btn btn-success btn-block" %>
@@ -41,11 +46,21 @@
         </div>
       </div>
 
+<!--いいね機能-->
+     <% if user_signed_in? %>
+      <div class = "favorites">
+       <%= render 'public/favorites/favorite-btn', create: @create %>
+      </div>
+     <% end %>
 
+
+<!--コメント機能-->
+    <%# if user_signed_in? %>
       <div class = "create_comments">
        <%= render 'public/create_comments/index', create: @create %>
        <%= render 'public/create_comments/form', create: @create, create_comment: @create_comment %>
       </div>
+
 
 
   </div>

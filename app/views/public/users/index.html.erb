@@ -6,21 +6,14 @@
     </div>
   </div>
 
-
   <div class="row">
     <% @users.each do |user| %>
     <div class="col-4 mb-4">
       <div class="card-group">
         <div class="card">
           <%= image_tag user.get_profile_image(100,100) %>
-          <%= link_to "ユーザーの情報", public_user_path(user), class:"card-img-top" %>
-
-            <%#= image_tag item.get_image(250,250), class:"card-img-top" %><br>
-          <%# end %>
-          <div class="card-body" >
+          <%= link_to "ユーザーの詳細", public_user_path(user), class:"card-img-top" %>
             <%= user.name %><br>
-
-          </div>
         </div>
       </div>
     </div>
