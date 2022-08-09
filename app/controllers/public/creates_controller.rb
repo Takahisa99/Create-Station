@@ -5,8 +5,9 @@ class Public::CreatesController < ApplicationController
 
 #作品一覧
   def index
-    @creates = Create.all
+    @creates = Create.page(params[:page]).per(6)
     @create = Create.new
+    @total_creates = Create.count
 
   end
 
@@ -14,6 +15,7 @@ class Public::CreatesController < ApplicationController
   def show
     @create = Create.find(params[:id])
     @creates = Create.all
+    @create_comment = CreateComment.new
     @user = @create.user
   end
 
@@ -56,7 +58,7 @@ class Public::CreatesController < ApplicationController
   def destroy
     @create = Create.find(params[:id])
     @create.destroy
-    redirect_to public_create_path
+    redirect_to public_user_path(current_user)
   end
 
   private

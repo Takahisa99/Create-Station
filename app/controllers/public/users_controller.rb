@@ -1,11 +1,13 @@
 class Public::UsersController < ApplicationController
 
-  #before_action :ensure_correct_user, only: [:update,:edit]
+  before_action :ensure_correct_user, only: [:update,:edit]
+  before_action :ensure_guest_user, only: [:edit]
+
 
 #会員の一覧
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(9)
     @create = Create.new
     @user = current_user
   end
@@ -16,6 +18,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @creates = @user.creates
     @create = Create.new
+
+    #@total_creates = Create.count
   end
 
 
@@ -42,6 +46,20 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :profile_image)
   end
 
+#ゲストユーザー
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
 
 
+
+  def ensure_correct_user
+
+    @user = User.find(params[:id])
+    redirect_to public_users_path unless @user == current_user
+
+  end
 end

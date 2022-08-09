@@ -16,8 +16,12 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand p-3" href="/"><%= image_tag 'create.png',:size =>'50x50' %></a>
+          <a class="navbar-brand p-3" href="/"><%#= image_tag 'create.png',:size =>'50x50' %></a>
           <div class="float-left header-logo">
+            <%= link_to root_path do %>
+            <%= image_tag 'create.png',:size =>'50x50' %>
+            <% end %>
+          </div>
 
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -42,6 +46,12 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light mr-4" %>
             </li>
             <% else %>
+              <li class="nav-item">
+              <%= link_to "About", about_path, class: "btn btn-outline-light mr-4" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '作品一覧', public_creates_path, class: "btn btn-outline-light mr-4" %>
+            </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light mr-4" %>
             </li>

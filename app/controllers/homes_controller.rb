@@ -1,6 +1,9 @@
 class HomesController < ApplicationController
   def top
-    @creates = Create.all
+    @creates = Create.page(params[:page]).per(6)
+  end
+
+  def about
   end
 
   def guest_sign_in

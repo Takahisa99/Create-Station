@@ -3,11 +3,17 @@ class Create < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-
 #コメント機能
-  #has_many :creates_comments, dependent: :destroy
+  has_many :create_comments, dependent: :destroy
 #いいね機能
-  #has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
+
 
   # 検索方法分岐
   def self.looks(search, word)

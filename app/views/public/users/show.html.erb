@@ -1,12 +1,17 @@
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-7'>
+      <% if @user == current_user %>
       <h2 class="mt-4"><strong>マイページ</strong></h2><br>
+      <% else @user.name %>
+      <h2 class="mt-4"> <strong><%= @user.name %>さんのプロフィール</strong></h2>
+      <% end %>
+
 
       <h4 class="my-3 ml-3"><strong>登録情報</strong></h4>
       <div class="my-3 ml-3"><%= image_tag @user.get_profile_image(100,100) %></div>
-
         <div class="mb-3">
+          <% if @user == current_user %>
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -19,8 +24,13 @@
               </tr>
             </thead>
           </table>
+         <% end %>
+
+          <% if @user == current_user %>
           <%= link_to "編集する", edit_public_user_path, class:"btn btn-success btn-block" %><br>
-          <h4 class="my-3 ml-3"><strong>あなたの作品一覧</strong></h4>
+          <% end %>
+          <h4 class="my-3 ml-3"><strong>あなたの作品一覧</strong>(全 <%= @creates.count %> 件)</h4>
+
 
   <div class="row">
     <% @creates.each do |create| %>
@@ -38,10 +48,13 @@
     </div>
     <% end %>
   </div>
-
-
-
+        <% if @user == current_user %>
           <h4 class="my-3 ml-3"><strong>あなたのお気に入り</strong>　<%#= link_to "一覧", public_orders_path, class:"btn btn-primary" %></h4>
+        <% else @user.name %>
+          <div><%= link_to "ユーザー一覧へ", public_users_path, class:"btn btn-success btn-block" %></div>
+        <% end %>
+
+
         </div>
     </div>
   </div>

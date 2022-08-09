@@ -2,32 +2,49 @@
   <div class=“row”>
 
        <h2 class="mt-4"><strong><%= @create.name %></strong></h2><br>
-           <%= simple_format(@create.introduction) %>
+
 
       <div class="row">
         <div class="col-4 mb-4">
           <div class="card-group">
-            <div class="card">
+
               <%= link_to public_creates_path(@create), class:"card-img-top" do %>
                 <%= image_tag @create.get_image(250,250), class:"card-img-top" %><br>
               <% end %>
-            </div>
+
           </div>
         </div>
       </div>
+
+      <div class="col-4 mb-4">
+        <div class="card-group">
+         <h4>作品紹介</h4>
+             <div><br>
+                  <%= simple_format(@create.introduction) %>
+             </div>
+        </div>
+      </div>
+
 
       <div class="col-5 mb-5">
         <div class="card-group">
           <div class="card">
             <% if @create.user == current_user %>
                <%= link_to "編集", edit_public_create_path(@create), class:"btn btn-success btn-block" %>
-                <%#削除がうまくいってない  %>
                <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger"%>
-            <% end %>
                <%= link_to "戻る", public_user_path(current_user), class:"btn btn-primary btn-block" %>
-
+            <% else @create.user %>
+                 <%= link_to "戻る", public_creates_path, class:"btn btn-primary btn-block" %>
+                 <%= link_to "ユーザーの情報", public_user_path(@user), class:"btn btn-success btn-block" %>
+            <% end %>
           </div>
         </div>
+      </div>
+
+
+      <div class = "create_comments">
+       <%= render 'public/create_comments/index', create: @create %>
+       <%= render 'public/create_comments/form', create: @create, create_comment: @create_comment %>
       </div>
 
 
