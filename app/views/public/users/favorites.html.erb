@@ -1,4 +1,46 @@
 いいね一覧
-<% @favorite_creates.each do |favorite|%>
-<%= favorite.name %>
+
+
 <% end %>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mt-4 mb-4">
+       <h3><strong>いいね一覧</strong> (全 <%= @total_creates %> 件)</h3><br>
+    </div>
+  </div>
+
+
+     <table>
+         <thead>
+            <tr>
+             <th>作品<th>
+             <th>作品名</th>
+            </tr>
+         </thead>
+     <% @favorite_creates.each do |favorite|%>
+         <tbody>
+            <tr>
+
+             <td><%= image_tag user.get_profile_image(100,100) %><td>
+             <td><%= favorite.name %></td>
+            </tr>
+         </tbody>
+      <% end %>
+     </table>
+
+
+  <!--<div class="row">-->
+  <!-- <%# @favorite_creates.each do |favorite|%>-->
+  <!--  <div class="col-4 mb-4">-->
+  <!--    <div class="card-group">-->
+  <!--      <div class="card">-->
+
+          <%#= link_to "ユーザーの詳細", public_user_path(user), class:"card-img-top" %>
+  <!--          <br>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  </div>
