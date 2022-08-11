@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   devise_for :users
   root to: 'homes#top'
   get "/about"=>"homes#about"
@@ -30,10 +31,10 @@ Rails.application.routes.draw do
   end
 
 
-  namespace :admin do
-    get 'index/edit'
-    get 'index/show'
-  end
+  # namespace :admin do
+  #   get 'index/edit'
+  #   get 'index/show'
+  # end
 
 
 

@@ -1,13 +1,9 @@
-いいね一覧
-
-
-<% end %>
 
 <div class="container">
 
   <div class="row">
     <div class="col-12 mt-4 mb-4">
-       <h3><strong>いいね一覧</strong> (全 <%= @total_creates %> 件)</h3><br>
+       <h3><strong>いいね一覧</strong> (全 <%= @favorite_creates.count %> 件)</h3><br>
     </div>
   </div>
 
@@ -23,7 +19,7 @@
          <tbody>
             <tr>
 
-             <td><%= image_tag user.get_profile_image(100,100) %><td>
+             <td><%= image_tag favorite.get_image(100,100) %><td>
              <td><%= favorite.name %></td>
             </tr>
          </tbody>
