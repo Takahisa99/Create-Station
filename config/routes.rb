@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+  sessions: "admin/sessions"
+  }
+
+
   devise_for :users
   root to: 'homes#top'
   get "/about"=>"homes#about"
@@ -23,21 +27,19 @@ Rails.application.routes.draw do
     resources :creates, only:[:index, :new, :show, :create, :edit, :update, :destroy] do
      resources :create_comments, only: [:create, :destroy ]
      resources :favorites, only:[:create, :destroy, :index ]
-
     end
     get  "/searches" => "searches#search"
-
-
   end
 
 
-  # namespace :admin do
-  #   get 'index/edit'
-  #   get 'index/show'
-  # end
-
-
-
+  namespace :admin do
+    get "/"=>"homes#top"
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :creates, only:[:index, :show, :edit, :update, :destroy] do
+    resources :create_comments, only: [:create, :destroy ]
+    end
+    #resources :order_details, only: [:update,]
+  end
 
 
 

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   #コメント機能
   has_many :create_comments, dependent: :destroy
 
+  #管理者側
+  belongs_to :admin
 
  #ゲストログイン
   def self.guest
