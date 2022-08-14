@@ -3,10 +3,15 @@ class Create < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
+  belongs_to :genre
 #コメント機能
   has_many :create_comments, dependent: :destroy
 #いいね機能
   has_many :favorites, dependent: :destroy
+
+
+  validates :name, presence:true
+  validates :introduction, presence:true,length:{maximum:200}
 
 
   def favorited_by?(user)

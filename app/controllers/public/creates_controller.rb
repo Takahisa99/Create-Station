@@ -65,7 +65,7 @@ class Public::CreatesController < ApplicationController
   private
 
   def create_params
-    params.require(:create).permit(:name, :introduction, :image)
+    params.require(:create).permit(:name, :introduction, :image, :genre_id )
   end
 
 

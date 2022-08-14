@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :creates, only:[:index, :show, :edit, :update, :destroy] do
     resources :create_comments, only: [:create, :destroy ]
     end
+    resources :genres, only: [:index, :create, :edit, :update, :destroy ]
     #resources :order_details, only: [:update,]
   end
 

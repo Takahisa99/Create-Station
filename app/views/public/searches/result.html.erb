@@ -1,18 +1,26 @@
-<h2>Results index</h2>
+<h2>検索結果</h2>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
     <tbody>
+      　<tr>
+      　 <th>名前</th>
+      　</tr>
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td>
+          <td><%= user.introduction%></td>
         </tr>
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがCreateの時) -->
     <tbody>
+        <tr>
+      　 <th>作品名</th>
+      　  <th>作紹介</th>
+      　</tr>
       <% @creates.each do |create| %>
         <tr>
           <td><%= create.name %></td>

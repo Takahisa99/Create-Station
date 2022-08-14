@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-4'>
+      <h3 class="mt-4"><strong>ジャンル編集</strong></h3><br>
+
+
+      <% if @genre.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h3>
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    　<% end %>
+
+      <div class="mb-3">
+        <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local:true do |f| %>
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.submit "変更を保存", class:"btn btn-success btn-block" %>
+      </div>
+      <div class="mb-3">
+        <%= link_to "削除", admin_genre_path(@genre), method: :delete, class:"btn btn-danger"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
