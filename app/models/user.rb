@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :create_comments, dependent: :destroy
 
   #管理者側
-  belongs_to :admin
+  #belongs_to :admin
 
  #ゲストログイン
   def self.guest
@@ -52,8 +52,10 @@ class User < ApplicationRecord
     end
   end
 
-
-
+#退会機能
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 
 
 

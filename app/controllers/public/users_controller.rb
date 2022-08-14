@@ -46,6 +46,18 @@ class Public::UsersController < ApplicationController
     @favorite_creates = Create.find(favorites)
   end
 
+#退会機能
+
+  def unsubscribe
+  end
+
+
+  def withdrawal
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_sesssion
+    redirect_to root_path
+  end
 
 
 

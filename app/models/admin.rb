@@ -6,5 +6,5 @@ class Admin < ApplicationRecord
 
   #会員側
 
-  has_many :users
+  #has_many :users
 end

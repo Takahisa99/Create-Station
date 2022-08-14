@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mt-4 mb-4">
+       <h3><strong>作品一覧</strong> (全 <%= @creates.count %> 件)</h3><br>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <% @creates.each do |create| %>
+    <div class="col-4 mb-4">
+      <div class="card-group">
+        <div class="card">
+
+          <%= link_to admin_create_path(create) do %>
+            <%= image_tag create.get_image(250,250), class:"card-img-top" %><br>
+
+          <div class="card-body">
+             <%= create.name %><br>
+
+              <%#= create.created_at %>
+          <% end %>
+             <%= create.introduction %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center  mt-5 ">
+      <%#= paginate @creates %>
+    </div>
+  </div><br>

@@ -47,7 +47,30 @@
             <div class = "serach_form">
               <%= render 'public/searches/serach' %>
             </div>
-<!--ログインしていないユーザー-->
+
+<!--管理者側-->
+          <% elsif admin_signed_in? %>
+
+           <li>
+             <%= link_to "作品一覧", admin_creates_path, class: "btn btn-outline-light mr-3" %>
+           </li>
+
+           <li>
+             <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-light mr-3" %>
+           </li>
+
+           <li>
+             <%#= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-light mr-3" %>
+           </li>
+
+           <li>
+             <%#= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-light mr-3" %>
+           </li>
+
+           <li>
+             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light mr-2" %>
+           </li>
+  <!--ログインしていないユーザー-->
             <% else %>
               <li class="nav-item">
               <%= link_to "About", about_path, class: "btn btn-outline-light mr-4" %>
