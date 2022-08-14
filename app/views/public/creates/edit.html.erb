@@ -16,6 +16,11 @@
       </div>
 
       <div class="mb-3">
+        <%= f.label :genre, "ジャンル" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true, class:"form-control" %>
+      </div>
+
+      <div class="mb-3">
         <%= f.label :introduction, "作品説明" %>
         <%= f.text_area :introduction, class:"form-control", placeholder: "作品説明" %>
       </div>

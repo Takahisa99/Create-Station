@@ -11,6 +11,9 @@
   <%= link_to "ユーザー一覧", public_users_path, class: "btn btn-secondary" %>
   <br>
   <br>
+  <div>
+    <%= render 'admin/genres/tag-search' %>
+  </div>
   <div class="row">
     <% @creates.each do |create| %>
     <div class="col-4 mb-4">

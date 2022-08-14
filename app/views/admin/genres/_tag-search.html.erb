@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <%= form_with model: @create, url: public_creates_path , local: true do |f| %>
+        <div class="mb-3">
+            <%= f.label :genre, "タグ　" %>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true, class:"form-control" %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+        </div>
+    <% end %>
+<% end %>
