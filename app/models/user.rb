@@ -13,7 +13,9 @@ class User < ApplicationRecord
   #コメント機能
   has_many :create_comments, dependent: :destroy
 
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :email, presence: true
   validates :introduction, length: { maximum: 50 }
 
  #ゲストログイン
@@ -59,7 +61,6 @@ class User < ApplicationRecord
 
 
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
 
 
