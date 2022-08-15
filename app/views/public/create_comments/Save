@@ -1,0 +1,35 @@
+
+
+<div class="container">
+  <div class="row">
+    <% if create.user == current_user %>
+         <div class="col">
+              <% create.create_comments.each do |create_comment| %>
+              <div class="col-6">
+                  <%= link_to public_user_path(create_comment.user) do  %>
+                  <%= image_tag create_comment.user.get_profile_image(100,100) %>
+                  <div class="col">
+                  <%= create_comment.user.name %>
+                  <% end %>
+                  </div>
+               </div>
+               <div class="col">
+                  <%= create_comment.created_at.strftime('%Y/%m/%d') %><%= create_comment.comment %>
+               </div>
+              <% end %>
+         </div>
+    <% else %>
+        <div class="col">
+          <div class="col">
+        <% if user_signed_in? %>
+          <div>コメント投稿フォーム</div>
+           <%= form_with model: [create, create_comment], url: public_create_create_comments_path(create.id), local: true do |f| %>
+             <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに", class: "w-100" %>
+             <%= f.submit "送信", class:"btn btn-success btn-block"  %><br>
+           <% end %>
+        <% end %>
+           </div>
+        </div>
+    <% end %>
+  </div>
+</div>

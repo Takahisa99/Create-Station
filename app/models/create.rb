@@ -11,6 +11,7 @@ class Create < ApplicationRecord
 
 
   validates :name, presence:true
+  validates :image, presence: true
   validates :introduction, presence:true,length:{maximum:200}
 
 

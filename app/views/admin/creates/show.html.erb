@@ -19,8 +19,7 @@
                  <div>
                   <% if @create.user == current_user %>
                   <% else %>
-
-                      <%= @user.name %>さんの投稿
+                      <%= @create.user.name %>さんの投稿
                   <% end %>
                  </div>
              <div><br>
@@ -40,7 +39,7 @@
 <!--ログインしていないユーザー-->
             <% else @create.user %>
                  <%= link_to "戻る", admin_creates_path, class:"btn btn-primary btn-block" %>
-                 <%= link_to "ユーザーの情報", admin_user_path(@user), class:"btn btn-success btn-block" %>
+                 <%= link_to "ユーザーの情報", admin_user_path(@create.user.id), class:"btn btn-success btn-block" %>
             <% end %>
           </div>
         </div>

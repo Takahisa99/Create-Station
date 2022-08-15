@@ -23,6 +23,10 @@
            <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
      </div>
       <div class="mb-3">
+        <%= f.label :introduction, "紹介" %>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+      </div>
+      <div class="mb-3">
           <%= f.submit "編集内容を保存", class:"btn btn-success btn-block" %>
       </div>
 

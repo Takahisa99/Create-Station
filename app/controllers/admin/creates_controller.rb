@@ -3,12 +3,13 @@ class Admin::CreatesController < ApplicationController
 
     def index
     #   @create = Create.find(create_params)
-       @creates = Create.all
+       @creates = Create.includes(:user).where(user: {is_deleted: false})
     end
 
     def show
        @create = Create.find(params[:id])
-       @user = User.find(params[:id])
+       #@user = @create.user.find(params[:id])
+       #@user = User.find(params[create_params])
     end
 
     def edit

@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-12 mt-4 mb-4">
-       <h3><strong>ユーザー一覧</strong> (全 <%= @total_creates %> 件)</h3><br>
+       <h3><strong>ユーザー一覧</strong> (全 <%= @users.count %> 件)</h3><br>
     </div>
   </div>
 
@@ -11,9 +11,10 @@
     <div class="col-4 mb-4">
       <div class="card-group">
         <div class="card">
-          <%= image_tag user.get_profile_image(100,100) %>
-          <%= link_to "ユーザーの詳細", public_user_path(user), class:"card-img-top" %>
+          <%= image_tag user.get_profile_image(100,100)  %>
+          <%= link_to public_user_path(user), class:"card-img-top" do %>
             <%= user.name %><br>
+          <% end %>
         </div>
       </div>
     </div>

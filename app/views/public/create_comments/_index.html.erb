@@ -1,47 +1,67 @@
-<div class="container">
-    <div class="row">
-       <div class="col">
-          <p>コメント件数：<%= create.create_comments.count %></p>
-       </div>
+    <!--<div class="col-5 mx-auto">-->
+    <!--      <%# if create.create_comments.errors.any? %>-->
+    <!--          <div id=error_explanation>-->
+    <!--            <h3>コメントが未入力です！</h3>-->
+    <!--          <ul>-->
+    <!--            <%# create.create_comment.errors.full_messages.each do |message| %>-->
+    <!--            <li><%#= message %></li>-->
+    <!--            <%# end %>-->
+    <!--          </ul>-->
+    <!--          </div>-->
+    <!--      <%# end %>-->
+    <!--</div>-->
+
+
+    <div class="container">
+        <div class="row">
+           <div class="col">
+              <p>コメント件数：<%= create.create_comments.count %></p>
+           </div>
+        </div>
+
+     <%# if create.user == current_user %>
+
+        <div class="row">
+            <div class="col">
+              <h4>コメント一覧</h4>
+            </div>
+        </div>
     </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">アイコン</div>
+            <div class="col">投稿者</div>
+            <div class="col">投稿日</div>
+            <div class="col">コメント</div>
+            <div class="col"></div>
+          </div>
+        </div>
+         <% create.create_comments.each do |create_comment| %>
+            <div class="container-fluid">
+              <div class="row">
+                    <div class="col">
+                          <%= link_to public_user_path(create_comment.user) do  %>
+                          <%= image_tag create_comment.user.get_profile_image(100,100)  %><br>
+                    </div>
+                   <div class="col">
+                          <%#= link_to public_user_path(create_comment.user) do  %>
+                          <%= create_comment.user.name %>
+                          <% end %>
+                    </div>
+                    <div class="col">
+                      <%= create_comment.created_at.strftime('%Y/%m/%d') %>
+                    </div>
+                    <div class="col">
+                      <%= create_comment.comment %>
+                    </div>
+              <!--ログインしているユーザーのみ表示-->
+                    <div class="col">
+                        <%if create_comment.user == current_user %>
+                        <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                        <% end %>
+                    </div>
+              </div>
+            </div>
+         <% end %>
+     <%# end %>
 
-    <div class="row">
-        <div class="col">
-          <p>コメント一覧</p>
-        </div>
-    </div>
-
-     <div class="row">
-       <div calss="col-lg-5">アイコン</div>
-       <div calss="col-lg-5">投稿者</div>
-       <div calss="col-lg-5">投稿日</div>
-       <div calss="col-lg-5">コメント</div>
-       <div calss="col-lg-5"></div>
-     </div>
-
-
-    <% create.create_comments.each do |create_comment| %>
-    <div class="row">
-        <div class="col-lg-5">
-              <%= link_to public_user_path(create_comment.user) do  %>
-              <%= image_tag create_comment.user.get_profile_image(100,100)  %><br>
-        </div>
-        <div class="col-lg-5">
-              <%= create_comment.user.name %>
-              <% end %>
-        </div>
-        <div class="col-lg-5">
-          <%= create_comment.created_at.strftime('%Y/%m/%d') %>
-        </div>
-        <div class="col-lg-5">
-          <%= create_comment.comment %>
-        </div>
-  <!--ログインしているユーザーのみ表示-->
-        <div class="col-lg-5">
-            <%if create_comment.user == current_user %>
-            <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
-            <% end %>
-        </div>
-    <% end %>
-    </div>
-</div>

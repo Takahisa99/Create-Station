@@ -1,4 +1,12 @@
-<h2>検索結果</h2>
+<div class='container'>
+  <div class=“row”>
+        <div class="mb-3">
+              <h2>検索結果</h2>
+        </div>
+  </div>
+</dvi>
+
+
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
@@ -18,11 +26,17 @@
     <!--検索対象モデルがUserではない時(= 検索対象モデルがCreateの時) -->
     <tbody>
         <tr>
+         <th>作品</th>
       　 <th>作品名</th>
-      　  <th>作紹介</th>
-      　</tr>
+      　 <th>紹介</th>
+      　  </tr>
       <% @creates.each do |create| %>
         <tr>
+          <td>
+            <%= link_to public_create_path(create) do %>
+            <%= image_tag create.get_image(100,100) %>
+            <% end %>
+          </td>
           <td><%= create.name %></td>
           <td><%= create.introduction %></td>
         </tr>

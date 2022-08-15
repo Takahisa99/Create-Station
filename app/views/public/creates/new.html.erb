@@ -1,5 +1,14 @@
 <div class="col-5 mx-auto">
-    <%#= render 'public/shared/error_messages', model: f.object  %>
+          <% if @create.errors.any? %>
+              <div id=error_explanation>
+                <h3>入力エラーが<%= @create.errors.count %>件あります！</h3>
+              <ul>
+                <% @create.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+              </div>
+          <% end %>
 </div>
 
 

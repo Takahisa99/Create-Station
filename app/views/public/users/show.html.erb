@@ -25,6 +25,10 @@
                 <td>メールアドレス</td>
                 <td><%= @user.email %></td>
               </tr>
+              <tr>
+                <td>自己紹介</td>
+                <td><%= @user.introduction %></td>
+              </tr>
             </thead>
           </table>
          <% end %>
@@ -54,9 +58,9 @@
 
 
         <% if @user == current_user %>
-          <h4 class="my-3 ml-3"><strong><%=link_to"お気に入り記事",favorites_public_user_path(current_user.id) %></strong></h4>
+          <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(current_user.id) %></strong></h4>
         <% else %>
-           <h4 class="my-3 ml-3"><strong><%=link_to"お気に入り記事",favorites_public_user_path(@user) %></strong></h4>
+           <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(@user) %></strong></h4>
           <div><%= link_to "ユーザー一覧へ", public_users_path, class:"btn btn-success btn-block" %></div>
         <% end %>
 

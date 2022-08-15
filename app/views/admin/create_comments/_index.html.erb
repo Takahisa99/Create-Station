@@ -1,19 +1,54 @@
-<table>
-  <tbody>
-  <p>コメント件数：<%= create.create_comments.count %></p>
-    <% create.create_comments.each do |create_comment| %>
-    <tr>
-        <td>
-              <%= link_to public_user_path(create_comment.user) do  %>
-              <%= image_tag create_comment.user.get_profile_image(100,100)  %><br>
-              <%= create_comment.user.name %>
-              <% end %>
-            <%= create_comment.created_at.strftime('%Y/%m/%d') %><%= create_comment.comment %>
-  <!--ログインしているユーザーのみ表示-->
+<div class="container">
+    <div class="row">
+       <div class="col">
+          <p>コメント件数：<%= create.create_comments.count %></p>
+       </div>
+    </div>
 
-            <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
-        </td>
-    </tr>
+    <div class="row">
+        <div class="col">
+          <h4>コメント一覧</h4>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">アイコン</div>
+        <div class="col">投稿者</div>
+        <div class="col">投稿日</div>
+        <div class="col">コメント</div>
+        <div class="col"></div>
+      </div>
+    </div>
+
+
+
+    <% create.create_comments.each do |create_comment| %>
+        <div class="container-fluid">
+          <div class="row">
+                <div class="col">
+                      <%= link_to admin_user_path(create_comment.user) do  %>
+                      <%= image_tag create_comment.user.get_profile_image(100,100)  %><br>
+                      <% end %>
+                </div>
+               <div class="col">
+                      <%= link_to admin_user_path(create_comment.user) do  %>
+                      <%= create_comment.user.name %>
+                      <% end %>
+                </div>
+                <div class="col">
+                  <%= create_comment.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <div class="col">
+                  <%= create_comment.comment %>
+                </div>
+          <!--ログインしているユーザーのみ表示-->
+                <div class="col">
+                    <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                </div>
+          </div>
+        </div>
     <% end %>
-   </tbody>
-</table>
+

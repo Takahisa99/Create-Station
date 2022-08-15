@@ -5,7 +5,8 @@ class Public::CreatesController < ApplicationController
 
 #作品一覧
   def index
-    @creates = Create.page(params[:page]).per(6)
+    @creates = Create.includes(:user).where(user: {is_deleted: false})
+    #.page(params[:page]).per(6)
     @create = Create.new
     @total_creates = Create.count
 
@@ -30,8 +31,7 @@ class Public::CreatesController < ApplicationController
       redirect_to public_create_path(@create)
     else
        @user = current_user
-
-      render :index
+      render :new
     end
   end
 

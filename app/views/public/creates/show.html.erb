@@ -1,5 +1,6 @@
 <div class='container'>
   <div class=“row”>
+      <!--作品名と画像-->
        <h2 class="mt-4"><strong><%= @create.name %></strong></h2><br>
       <div class="row">
         <div class="col-md-8 offset-md-1">
@@ -9,39 +10,51 @@
               <% end %>
           </div>
         </div>
-      </div><br>
+      </div>
 
-      <div class="col-4 mb-4">
-        <div class="card-group">
-         <h4>作品紹介</h4>
-                 <div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <h2>作品紹介</h2>
+        </div>
+      </div>
+    </div>
+
+        <div class="container-fluid">
+         <div class="row">
+                 <div class="col">
                   <% if @create.user == current_user %>
                   <% else %>
-
                       <%= @user.name %>さんの投稿
                   <% end %>
                  </div>
-                 <div>
+         </div>
+        </div>
+                 <div class="col">
                      <%= @create.genre.name %>
                  </div>
-                 <div><br>
+                 <div class="col"><br>
                       <%= simple_format(@create.introduction) %>
                  </div>
+         </div>
         </div>
-      </div>
-      <div class="col-5 mb-5">
-        <div class="card-group">
-          <div class="card">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+              <div class="col-4">
 <!--ログインしているユーザーのみ表示-->
             <% if @create.user == current_user %>
                <%= link_to "編集", edit_public_create_path(@create), class:"btn btn-success btn-block" %>
-               <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger"%>
+               <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger btn-block"%>
                <%= link_to "戻る", public_user_path(current_user), class:"btn btn-primary btn-block" %>
 <!--ログインしていないユーザー-->
             <% else @create.user %>
                  <%= link_to "戻る", public_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", public_user_path(@user), class:"btn btn-success btn-block" %>
             <% end %>
+              </div>
           </div>
         </div>
       </div>
@@ -57,6 +70,8 @@
 
       <div class = "create_comments">
        <%= render 'public/create_comments/index', create: @create %>
+      </div>
+      <div class = "create_commemts_form">
        <%= render 'public/create_comments/form', create: @create, create_comment: @create_comment %>
       </div>
   </div>

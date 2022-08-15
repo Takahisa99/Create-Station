@@ -6,21 +6,29 @@
        <h3><strong>いいね一覧</strong> (全 <%= @favorite_creates.count %> 件)</h3><br>
     </div>
   </div>
+</div>
 
-
-     <table>
+     <table class="table">
          <thead>
             <tr>
-             <th>作品<th>
-             <th>作品名</th>
+             <th scope="col"></th>
+             <th scope="col">作品<th>
+             <th scope="col">作品名</th>
+             <th scope="col">紹介</th>
             </tr>
          </thead>
      <% @favorite_creates.each do |favorite|%>
          <tbody>
             <tr>
+             <td></td>
+             <td>
+                <%= link_to public_create_path(favorite) do %>
+                 <%= image_tag favorite.get_image(150,150) %>
+                <% end %>
+             <td>
 
-             <td><%= image_tag favorite.get_image(100,100) %><td>
              <td><%= favorite.name %></td>
+             <td><%= favorite.introduction %></td>
             </tr>
          </tbody>
       <% end %>
@@ -38,5 +46,3 @@
   <!--      </div>-->
   <!--    </div>-->
   <!--  </div>-->
-
-  </div>
