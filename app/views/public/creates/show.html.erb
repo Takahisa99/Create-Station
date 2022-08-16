@@ -22,25 +22,40 @@
       </div>
     </div>
 
-        <div class="container-fluid">
-         <div class="row">
+      <div class="container-fluid">
+        <div class="row">
                  <div class="col">
                   <% if @create.user == current_user %>
                   <% else %>
-                      <%= @user.name %>さんの投稿
+                      <%= @create.user.name %>さんの投稿
                   <% end %>
                  </div>
-         </div>
         </div>
-                 <div class="col">
+      </div><br>
+       <div class="container-fluid">
+          <div class="row">
+                 <div class="col-4">
+                    <h4> ジャンル</h4>
+                 </div>
+                 <div class="col-4">
                      <%= @create.genre.name %>
                  </div>
-                 <div class="col"><br>
+          </div><br>
+       </div>
+       <div class="container-fluid">
+          <div class="row">
+                 <div class="col-4">
+                     <h4>作品説明</h4>
+                 </div>
+                 <div class="col-4">
                       <%= simple_format(@create.introduction) %>
                  </div>
-         </div>
-        </div>
-      <div class="container-fluid">
+          </div>
+       </div><br>
+
+
+
+      <div class='container'>
         <div class="row">
           <div class="col">
               <div class="col-4">
@@ -60,19 +75,39 @@
       </div>
 
 <!--いいね機能-->
-     <% if user_signed_in? %>
-      <div class = "favorites">
-       <%= render 'public/favorites/favorite-btn', create: @create %>
-      </div>
-     <% end %>
+   <div class="container-fluid">
+         <div class=“row”>
+             <% if user_signed_in? %>
+             <!--非同期通信-->
+              <div id="favorite_buttons_<%= @create.id %>">
+               <%= render 'public/favorites/favorite-btn', create: @create %>
+              </div>
+             <% end %>
+         </div>
+    </div>
 
 <!--コメント機能-->
+     <div class='container'>
+      <div class=“row”>
 
-      <div class = "create_comments">
-       <%= render 'public/create_comments/index', create: @create %>
+          <div class = "create_comments">
+           <%= render 'public/create_comments/error', create: @create %>
+           <%= render 'public/create_comments/index', create: @create %>
+          </div>
       </div>
-      <div class = "create_commemts_form">
-       <%= render 'public/create_comments/form', create: @create, create_comment: @create_comment %>
-      </div>
+     </div>
+
+
+       <div class='container'>
+        <div class=“row”>
+          <div class="col">
+          <div class = "create_commemts_form">
+           <%= render 'public/create_comments/form', create: @create, create_comment: @create_comment %>
+          </div>
+          </div>
+        </div>
+       </div>
+
+
   </div>
 </div>

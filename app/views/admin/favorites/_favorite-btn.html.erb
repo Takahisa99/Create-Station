@@ -2,7 +2,7 @@
 
       <% if create.favorited_by?(current_user) %>
         <p>
-          <%= link_to public_create_favorite_path(create,1), method: :delete, remote: true do %>
+          <%= link_to public_create_favorite_path(create), method: :delete, remote: true  do %>
            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
           <%= create.favorites.count %> いいね
           <% end %>

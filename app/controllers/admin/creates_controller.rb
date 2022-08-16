@@ -8,6 +8,7 @@ class Admin::CreatesController < ApplicationController
 
     def show
        @create = Create.find(params[:id])
+       @create.favorites.size
        #@user = @create.user.find(params[:id])
        #@user = User.find(params[create_params])
     end

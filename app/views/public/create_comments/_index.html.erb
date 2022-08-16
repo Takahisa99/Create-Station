@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
            <div class="col">
-              <p>コメント件数：<%= create.create_comments.count %></p>
+
            </div>
         </div>
 
@@ -25,7 +25,13 @@
             <div class="col">
               <h4>コメント一覧</h4>
             </div>
-        </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+              <%= render 'public/create_comments/counter', create: @create %>
+            </div>
+        </div><br>
+
     </div>
         <div class="container-fluid">
           <div class="row">
@@ -57,7 +63,7 @@
               <!--ログインしているユーザーのみ表示-->
                     <div class="col">
                         <%if create_comment.user == current_user %>
-                        <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                        <%= link_to "削除", public_create_create_comment_path(create, create_comment), method: :delete, class: "btn btn-danger pull-right", local: false  %>
                         <% end %>
                     </div>
               </div>

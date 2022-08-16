@@ -1,0 +1,3 @@
+$('textarea').val("");
+$(".create-comments-counter").html("<%= j(render('public/create_comments/counter', create: @comment.create)) %>");
+$(".create_comments").html("<%= j(render('public/create_comments/index', create: @comment.create)) %>");

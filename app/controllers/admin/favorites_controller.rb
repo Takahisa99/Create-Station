@@ -1,11 +1,12 @@
-class Public::FavoritesController < ApplicationController
-    before_action :authenticate_user!
+class Admin::FavoritesController < ApplicationController
+before_action :authenticate_admin!
+
 
   def create
     @create = Create.find(params[:create_id])
     @favorite = current_user.favorites.new(create_id: @create.id)
     @favorite.save
-    #redirect_to request.referer
+    redirect_to request.referer
   end
 
 
@@ -14,7 +15,7 @@ class Public::FavoritesController < ApplicationController
     @create = Create.find(params[:create_id])
     @favorite = current_user.favorites.find_by(create_id: @create.id)
     @favorite.destroy
-    #redirect_to request.referer
+    redirect_to request.referer
   end
 
 

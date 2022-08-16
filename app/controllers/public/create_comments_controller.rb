@@ -5,17 +5,16 @@ class Public::CreateCommentsController < ApplicationController
     @comment = current_user.create_comments.new(create_comment_params)
     @comment.create_id = @create.id
     @comment.save
-    redirect_to request.referer
+    #edirect_to request.referer
   end
 
   def destroy
     @create =Create.find(params[:create_id])
     CreateComment.find_by(id: params[:id], create_id: params[:create_id]).destroy
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
    private
-
 
   def create_comment_params
     params.require(:create_comment).permit(:comment)

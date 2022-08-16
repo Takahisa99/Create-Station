@@ -1,5 +1,5 @@
        <% if user_signed_in? %>
-       <%= form_with model: [create, create_comment], url: public_create_create_comments_path(create.id), local: true do |f| %>
+       <%= form_with model: [create, create_comment], url: public_create_create_comments_path(create.id), local: false do |f| %>
         <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに", class: "w-100" %>
         <%= f.submit "送信", class:"btn btn-success btn-block"  %><br>
        <% end %>
