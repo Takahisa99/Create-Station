@@ -42,7 +42,6 @@ class User < ApplicationRecord
 # 検索方法分岐
   def self.looks(word)
       @user = User.where("name LIKE?","%#{word}%")
-
   end
 
 #退会機能

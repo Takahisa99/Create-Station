@@ -2,6 +2,11 @@
   <div class=“row”>
         <div class="mb-3">
               <h2>検索結果</h2>
+              <% if @range == "User" %>
+              全<%=  @users.count %>件
+              <% else%>
+              全<%=  @creates.count %>件
+              <% end %>
         </div>
   </div>
 </dvi>
@@ -13,10 +18,17 @@
   <% if @range == "User" %>
     <tbody>
       　<tr>
+      　 <th></th>
       　 <th>名前</th>
+      　 <th>紹介</th>
       　</tr>
       <% @users.each do |user| %>
         <tr>
+          <td>
+            <%= link_to public_user_path(user) do %>
+            <%= image_tag user.get_profile_image(100,100) %>
+            <% end %>
+          </td>
           <td><%= user.name %></td>
           <td><%= user.introduction%></td>
         </tr>
