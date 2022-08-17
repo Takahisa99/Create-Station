@@ -27,7 +27,11 @@
                 <% end %>
              <td>
 
-             <td><%= favorite.name %></td>
+             <td>
+                 <%= link_to public_create_path(favorite) do %>
+                 <%= favorite.name %>
+                 <% end %>
+             </td>
              <td><%= favorite.introduction %></td>
             </tr>
          </tbody>

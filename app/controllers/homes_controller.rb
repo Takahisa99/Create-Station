@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @creates = Create.includes(:user).where(user: {is_deleted: false})
+    @creates = Create.includes(:user).where(user: {is_deleted: false}).order(created_at: :desc)
     #.page(params[:page]).per(6)
   end
 

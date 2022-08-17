@@ -26,6 +26,21 @@ class Create < ApplicationRecord
       @create = Create.where("name LIKE?","%#{word}%")
   end
 
+  # ランキング検索
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Favorite.group(:create_id).order(Arel.sql('count(create_id) desc')).pluck(:create_id))
+    when 'dislikes'
+      return find(Favorite.group(:create_id).order(Arel.sql('count(create_id) asc')).pluck(:create_id))
+    end
+  end
+
+
 
   validates :name,presence:true
   validates :introduction,presence:true,length:{maximum:200}

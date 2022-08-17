@@ -15,30 +15,9 @@
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
-    <tbody>
-      　<tr>
-      　 <th></th>
-      　 <th>名前</th>
-      　 <th>紹介</th>
-      　</tr>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <%= link_to public_user_path(user) do %>
-            <%= image_tag user.get_profile_image(100,100) %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to public_user_path(user) do %>
-            <%= user.name %>
-            <% end %>
-          </td>
-          <td><%= user.introduction%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
+  <% if @range == "Create" %>
+
+
     <!--検索対象モデルがUserではない時(= 検索対象モデルがCreateの時) -->
     <tbody>
         <tr>

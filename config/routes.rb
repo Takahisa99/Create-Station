@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     end
     resources :genres, only: [:index, :create, :edit, :update, :destroy ]
     #resources :order_details, only: [:update,]
+    get  "/searches" => "searches#search"
   end
 
 
