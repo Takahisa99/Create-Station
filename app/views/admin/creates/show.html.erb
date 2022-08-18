@@ -13,31 +13,42 @@
         </div>
       </div><br>
 
-
-    <div class="container-fluid">
+  <div class="border border-5">
+    <div class="container-fluid border border-5">
       <div class="row">
-        <div class="col">
-          <h2>作品紹介</h2>
-
+        <div class="col bg-info text-center">
+          <h3 class="text-white">作品紹介</h3>
         </div>
       </div>
     </div>
 
       <div class="container-fluid">
         <div class="row">
-                 <div class="col">
+                 <h4 class="col">
                   <% if @create.user == current_user %>
                   <% else %>
                       <%= @create.user.name %>さんの投稿
                   <% end %>
-                 </div>
+                 </h4>
         </div>
-      </div>
+      </div><br>
        <div class="container-fluid">
           <div class="row">
-                 <div class="col-4">
-                    <p> ジャンル</p>
+                 <div class="col-2">
+                     <h4 class="bg-warning text-center">作品紹介</h4>
                  </div>
+                 <div class="col-2"></div>
+                 <div class="col-4">
+                      <%= simple_format(@create.introduction) %>
+                 </div>
+          </div>
+       </div>
+       <div class="container-fluid">
+          <div class="row">
+                 <div class="col-2">
+                    <h4 class="bg-warning text-center"> ジャンル</h4>
+                 </div>
+                 <div class="col-2"></div>
                  <div class="col-4">
                      <%= @create.genre.name %>
                  </div>
@@ -45,15 +56,18 @@
        </div>
        <div class="container-fluid">
           <div class="row">
-                 <div class="col-4">
-                     <p>作品紹介</p>
+                 <div class="col-2">
+                    <h4 class="bg-warning text-center">投稿日時</h4>
                  </div>
+                 <div class="col-2"></div>
                  <div class="col-4">
-                      <%= simple_format(@create.introduction) %>
+                     <%= @create.created_at %>
                  </div>
-
-          </div>
+          </div><br>
        </div>
+
+
+  </div><br>
 
       <div class="col-5 mb-5">
         <div class="card-group">
@@ -77,13 +91,13 @@
          いいね数
        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
        <%= @create.favorites.count %>
-     </div>
+     </div><br>
      <%# end %>
 
 
 <!--コメント機能-->
 
-      <div class = "create_comments">
+      <div class = "create_comments create_comments border border-5">
        <%= render 'admin/create_comments/index', create: @create %>
 
       </div>

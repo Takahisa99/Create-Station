@@ -5,9 +5,7 @@ class Public::CreatesController < ApplicationController
 
 #作品一覧
   def index
-    @creates = Create.includes(:user).where(user: {is_deleted: false}).order(created_at: :desc)
-    
-    #.page(params[:page]).per(6)
+    @creates = Create.includes(:user).where(user: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(9)
     @create = Create.new
     @total_creates = Create.count
 

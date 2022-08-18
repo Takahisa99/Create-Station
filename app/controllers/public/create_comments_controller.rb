@@ -1,4 +1,5 @@
 class Public::CreateCommentsController < ApplicationController
+   before_action :authenticate_user!
 
   def create
     @create = Create.find(params[:create_id])

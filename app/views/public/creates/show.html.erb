@@ -10,33 +10,47 @@
               <% end %>
           </div>
         </div>
-      </div>
+      </div><br>
 
 
-
+  <div class="border border-5">
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <h2>作品紹介</h2>
+        <div class="col bg-info text-center">
+          <h3 class="text-white">作品詳細</h3>
         </div>
       </div>
     </div>
 
       <div class="container-fluid">
         <div class="row">
-                 <div class="col">
+                 <h4 class="col">
                   <% if @create.user == current_user %>
                   <% else %>
                       <%= @create.user.name %>さんの投稿
                   <% end %>
-                 </div>
+                 </h4>
         </div>
       </div><br>
        <div class="container-fluid">
           <div class="row">
-                 <div class="col-4">
-                    <h4> ジャンル</h4>
+                 <div class="col-2 ">
+                     <h4 class="bg-warning text-center">作品説明</h4>
                  </div>
+                 <div class="col-2"></div>
+                 <div class="col-4">
+                     <div>
+                      <%= simple_format(@create.introduction) %>
+                     </div>
+                 </div>
+          </div>
+       </div><br>
+       <div class="container-fluid">
+          <div class="row">
+                 <div class="col-2">
+                    <h4 class="bg-warning text-center"> ジャンル</h4>
+                 </div>
+                 <div class="col-2"></div>
                  <div class="col-4">
                      <%= @create.genre.name %>
                  </div>
@@ -44,15 +58,16 @@
        </div>
        <div class="container-fluid">
           <div class="row">
-                 <div class="col-4">
-                     <h4>作品説明</h4>
+                 <div class="col-2">
+                    <h4 class="bg-warning text-center">投稿日時</h4>
                  </div>
+                 <div class="col-2"></div>
                  <div class="col-4">
-                      <%= simple_format(@create.introduction) %>
+                     <%= @create.created_at %>
                  </div>
-          </div>
-       </div><br>
-
+          </div><br>
+       </div>
+  </div><br>
 
 
       <div class='container'>
@@ -72,7 +87,7 @@
               </div>
           </div>
         </div>
-      </div>
+      </div><br>
 
 <!--いいね機能-->
    <div class="container-fluid">
@@ -87,15 +102,15 @@
     </div>
 
 <!--コメント機能-->
+  <div>
      <div class='container'>
       <div class=“row”>
-
-          <div class = "create_comments">
+          <div class = "create_comments border border-5">
            <%= render 'public/create_comments/error', create: @create %>
            <%= render 'public/create_comments/index', create: @create %>
           </div>
       </div>
-     </div>
+     </div><br>
 
 
        <div class='container'>
@@ -107,7 +122,6 @@
           </div>
         </div>
        </div>
-
-
+  </div>
   </div>
 </div>
