@@ -65,6 +65,11 @@ gem 'kaminari','~> 1.2.1'
 gem 'image_processing', '~> 1.2'
 
 
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
