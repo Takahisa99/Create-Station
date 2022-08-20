@@ -79,6 +79,7 @@
             <%# else @create.user %>
                  <%= link_to "戻る", admin_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", admin_user_path(@create.user), class:"btn btn-success btn-block" %>
+                 <%= link_to "削除", admin_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger btn-block" %>
             <%# end %>
           </div>
         </div>

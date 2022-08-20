@@ -20,13 +20,16 @@ class Admin::CreatesController < ApplicationController
     end
 
     def destroy
+    @create = Create.find(params[:id])
+    @create.destroy
+    redirect_to admin_user_path(@create.user_id)
     end
 
 
 
    private
   def create_params
-    params.require(:creates).permit(:name, :user_id )
+    params.require(:creates).permit(:name, :user_id, :image, :genre_id, :introduction)
   end
 
 end
