@@ -37,6 +37,8 @@
           <%= link_to "編集する", edit_public_user_path, class:"btn btn-success btn-block" %><br>
           <% end %>
 
+
+
           <h4 class="my-3 ml-3"><strong><%= @user.name %>さんの作品一覧</strong>(全 <%= @creates.count %> 件)</h4>
             <div class="row">
               <% @creates.each do |create| %>
@@ -52,6 +54,7 @@
                   </div>
                 </div>
               </div>
+
               <% end %>
             </div>
 

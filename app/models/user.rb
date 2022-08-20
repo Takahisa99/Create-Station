@@ -27,6 +27,14 @@ class User < ApplicationRecord
     end
   end
 
+  def is_guest
+    if name == "guestuser" && email == "guest@example.com"
+      return true
+    end
+    false
+  end
+
+
 
  #画像投稿
   has_one_attached :profile_image
@@ -49,6 +57,7 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+
 
 
 

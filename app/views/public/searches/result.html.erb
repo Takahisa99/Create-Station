@@ -1,12 +1,13 @@
 <div class='container'>
   <div class=“row”>
         <div class="mb-3">
-              <h2>検索結果</h2>
+              <h2>検索結果:
               <% if @range == "User" %>
               全<%=  @users.count %>件
               <% else%>
               全<%=  @creates.count %>件
               <% end %>
+              </h2>
         </div>
   </div>
 </dvi>

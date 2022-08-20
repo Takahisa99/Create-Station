@@ -2,10 +2,14 @@ class Public::CreatesController < ApplicationController
 
 #ログインユーザー以外は下記の動作はできない
  before_action :ensure_correct_user, only: [:update,:edit]
+#ゲストユーザーは以下の動作はできない。
+ before_action :current_user_is_guest, only:[:create, :new, :edit, :update, :destroy]
+
 
 #作品一覧
   def index
-    @creates = Create.includes(:user).where(user: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(9)
+    @creates = Create.includes(:user).where(user: {is_deleted: false}).order(created_at: :desc)
+    #.page(params[:page]).per(9)
     @create = Create.new
     @total_creates = Create.count
 
@@ -73,6 +77,12 @@ class Public::CreatesController < ApplicationController
      unless @create.user == current_user
        redirect_to public_creates_path
      end
+  end
+
+  def current_user_is_guest
+    if current_user.is_guest
+      redirect_to new_user_session_path, notice: 'ゲストユーザーは投稿できません。'
+    end
   end
 
 end
