@@ -1,14 +1,5 @@
 <div class="col-5 mx-auto">
-          <% if @create.errors.any? %>
-              <div id=error_explanation>
-                <h3>入力エラーが<%= @create.errors.count %>件あります！</h3>
-              <ul>
-                <% @create.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-                <% end %>
-              </ul>
-              </div>
-          <% end %>
+
 </div>
 
 
@@ -17,6 +8,17 @@
     <div class='col-md-3'>
 
       <h2 class="mt-3">New Creates</h2>
+
+            <% if @create.errors.any? %>
+              <div id=error_explanation>
+                <h4>入力エラーが<%= @create.errors.count %>件あります！</h4>
+                  <ul>
+                  <% @create.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                  </ul>
+              </div>
+            <% end %>
       <%= render 'public/creates/form', create: @create %>
     </div>
     <div class='col-md-8 offset-md-1'>

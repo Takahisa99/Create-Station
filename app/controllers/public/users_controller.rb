@@ -72,7 +72,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.name == "guestuser"
       redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-
     end
   end
 

@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :create_comments, dependent: :destroy
 
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :email, presence: true
   validates :introduction, length: { maximum: 50 }
 
