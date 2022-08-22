@@ -18,11 +18,29 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand p-3" href="/"><%#= image_tag 'create.png',:size =>'50x50' %></a>
+      <!--ログインしているユーザーの場合-->
+         <% if user_signed_in? %>
           <div class="float-left header-logo">
             <%= link_to root_path do %>
             <%= image_tag 'create.png',:size =>'50x50' %>
             <% end %>
           </div>
+      <!--ログインしている管理者の場合-->
+         <% elsif admin_signed_in? %>
+             <div class="float-left header-logo">
+            <%= link_to admin_creates_path do %>
+            <%= image_tag 'create.png',:size =>'50x50' %>
+            <% end %>
+          </div>
+          <!--ログインしていないユーザーの場合-->
+         <% else %>
+          <div class="float-left header-logo">
+            <%= link_to root_path do %>
+            <%= image_tag 'create.png',:size =>'50x50' %>
+            <% end %>
+          </div>
+         <% end %>
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
