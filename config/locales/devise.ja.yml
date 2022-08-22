@@ -38,6 +38,8 @@ ja:
         name: "作品名"
         introduction: "紹介文"
         image: "画像"
+      genre:
+        name: "作品名"
     models:
       user: ユーザ
   devise:
