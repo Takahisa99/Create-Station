@@ -11,7 +11,7 @@
 
 
       <h4 class="my-3 ml-3"><strong>登録情報</strong></h4>
-      <div class="my-3 ml-3"><%= image_tag @user.get_profile_image(100,100) %></div>
+      <div class="my-3 ml-3 "><%= image_tag @user.get_profile_image(100,100), class:"rounded-circle" %></div>
         <div class="mb-3">
 <!--ログインしているユーザーの場合のみ表示-->
           <% if @user == current_user %>
