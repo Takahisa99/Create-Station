@@ -1,0 +1,10 @@
+<% if create.errors.any? %>
+  <div id=error_explanation>
+    <h4>入力エラーが<%= create.errors.count %>件あります！</h4>
+      <ul>
+      <% create.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>

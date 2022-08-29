@@ -1,10 +1,9 @@
 <div class="col-5 mx-auto">
-          <% if create.errors.any? %>
+          <% if user.errors.any? %>
               <div id=error_explanation>
-
-                 <h3>コメントを入力してください！</h3>
+                <h3>入力エラーが<%= user.errors.count %>件あります！</h3>
               <ul>
-                <% create.errors.full_messages.each do |message| %>
+                <% user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
                 <% end %>
               </ul>

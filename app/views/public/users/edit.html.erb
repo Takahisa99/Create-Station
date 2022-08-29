@@ -5,17 +5,8 @@
     <div class='mx-auto col-lg-6'>
       <h3 class="mt-4"><strong>会員情報編集</strong></h3>
 
+         <%= render 'public/users/error', user: @user %>
 
-      <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h3>入力エラーが<%= @user.errors.count %>件あります！</h3>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    　<% end %>
 
       <%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
 

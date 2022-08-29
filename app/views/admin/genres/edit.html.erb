@@ -3,16 +3,7 @@
     <div class='mx-auto col-lg-4'>
       <h3 class="mt-4"><strong>ジャンル編集</strong></h3><br>
 
-      <% if @genre.errors.any? %>
-      <div id="error_explanation">
-        <h4>入力されていません。</h4>
-        <ul>
-          <% @genre.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    　<% end %>
+       <%= render 'admin/genres/error', genre: @genre%>
 
       <div class="mb-3">
         <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local:true do |f| %>
