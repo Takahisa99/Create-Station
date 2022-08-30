@@ -1,0 +1,16 @@
+  <div class="row">
+    <% creates.each do |create| %>
+    <div class="col-4 mb-4">
+      <div class="card-group">
+        <div class="card">
+          <%= link_to public_create_path(create), class:"btn btn-outline-secondary"  do %>
+            <%= image_tag create.get_image(250,250), class:"card-img-top" %>
+          <div class="card-body">
+             <%= create.name %>
+          </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>

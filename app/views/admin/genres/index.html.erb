@@ -1,47 +1,12 @@
 <div class='container'>
-  <div class=“row”>
+  <div class=“row”><h2 class="mt-4"><strong>ジャンル一覧・追加</strong></h2>
     <div class='mx-auto col-lg-6'>
-      <h2 class="mt-4"><strong>ジャンル一覧・追加</strong></h2><br>
+      <br>
 
      <%= render 'admin/genres/error', genre: @genre%>
-
-
-
-       <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+     <%= render 'admin/genres/form', genre: @genre%>
         <div class="mb-3">
-            <%= f.label :name, "ジャンル名" %>
-            <%= f.text_field :name, class:"form-control" %><br>
-        </div>
-
-        <div class="mb-3">
-            <%= f.submit "新規登録", class:"btn btn-success btn-block" %>
-          <% end %>
-        </div>
-
-
-        <div class="mb-3">
-          <table class="table table-hover table-inverse">
-            <thead>
-              <tr>
-                <th>ジャンル</th>
-                <th colspan="3"></th>
-                <th colspan="3"></th>
-              </tr>
-            </thead><br>
-
-            <tbody>
-              <% @genres.each do |genre| %>
-                <thead>
-                  <tr>
-                    <td><%= genre.name %></td>
-                    <td><%= link_to edit_admin_genre_path(genre) do %>
-                    <div class="btn btn-success">編集する</div></td>
-                    <% end %>
-                  </tr>
-                </thead>
-              <% end %>
-            </tbody>
-          </table>
+      <%= render 'admin/genres/index', genre: @genre, genres: @genres  %>
         </div>
       </div>
   </div>
