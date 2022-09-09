@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get "/confirm"=>"users#confirm"
     patch "/withdrawal"=>"users#withdrawal"
 
+
     resources :users, only:[:index, :show, :create, :edit, :update ] do
       member do
         get :favorites
