@@ -34,6 +34,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+
       create:
         name: "作品名"
         introduction: "紹介文"
@@ -129,6 +130,7 @@ ja:
         sign_in: ログイン
       signed_in: CREATE-STATIONにようこそ！！
       signed_out: ログアウトしました。
+      guestuser_signed_id: ゲスト
     shared:
       links:
         back: 戻る
