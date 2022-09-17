@@ -13,16 +13,12 @@
     <div class="col-4 mb-4">
       <div class="card-group">
         <div class="card">
-
           <%= link_to admin_create_path(create), class:"btn btn-outline-secondary" do %>
             <%= image_tag create.get_image(250,250), class:"card-img-top" %><br>
-
           <div class="card-body">
              <%= create.name %><br>
           </div>
-
           <% end %>
-             <%#= create.introduction %>
         </div>
       </div>
     </div>
