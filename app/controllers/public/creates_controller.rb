@@ -18,6 +18,10 @@ class Public::CreatesController < ApplicationController
 #作品詳細
   def show
     @create = Create.find(params[:id])
+    #次へのデータ
+    @later = Create.where("id > ?", @create.id).order(:id).limit(1)
+    #前へのデータ
+    @ago = Create.where("id < ?", @create.id).order(:id, :desc).limit(1)
     @creates = Create.all
     @create_comment = CreateComment.new
     #@user = @create.user
