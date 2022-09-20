@@ -1,0 +1,6 @@
+    <% if @ago[0] %>
+     <%= link_to "前へ", public_create_path(@ago[0].id) %>
+   <% end %>
+   <% if @later[0] %>
+     <%= link_to "次へ", public_create_path(@later[0].id) %>
+   <% end %>
