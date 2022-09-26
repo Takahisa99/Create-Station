@@ -73,7 +73,7 @@
         <div class="card-group">
           <div class="card">
 
-<!--ログインしていないユーザー-->
+<%# ログインしていないユーザー %>
             <%# else @create.user %>
                  <%= link_to "戻る", admin_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", admin_user_path(@create.user), class:"btn btn-success btn-block" %>
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-<!--いいね機能-->
+<%#--いいね機能--%>
      <%# if user_signed_in? %>
 
      <div class="col-4">
@@ -96,7 +96,7 @@
 
 
 
-<!--コメント機能-->
+<%#--コメント機能-%>
 
       <div class = "create_comments create_comments border border-5">
        <%= render 'admin/create_comments/index', create: @create %>

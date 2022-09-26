@@ -1,10 +1,10 @@
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-7'>
-<!--ログインしているユーザーの場合-->
+<%#--ログインしているユーザーの場合--%>
       <% if @user == current_user %>
       <h2 class="mt-4"><strong>マイページ</strong></h2><br>
-<!--ログインしていないユーザーの場合-->
+<%#--ログインしていないユーザーの場合--%>
       <% else @user.name %>
       <h2 class="mt-4"> <strong><%= @user.name %>さんのプロフィール</strong></h2>
       <% end %>
@@ -13,7 +13,7 @@
       <h4 class="my-3 ml-3"><strong>登録情報</strong></h4>
       <div class="my-3 ml-3 "><%= image_tag @user.get_profile_image(100,100), class:"rounded-circle" %></div>
         <div class="mb-3">
-<!--ログインしているユーザーの場合のみ表示-->
+<%#--ログインしているユーザーの場合のみ表示--%>
           <% if @user == current_user %>
           <table class="table table-bordered">
             <thead>
@@ -32,7 +32,7 @@
             </thead>
           </table>
          <% end %>
-<!--ログインしているユーザーの場合のみ表示-->
+<%#--ログインしているユーザーの場合のみ表示 %>
           <% if @user == current_user %>
           <%= link_to "編集する", edit_public_user_path, class:"btn btn-success btn-block" %><br>
           <% end %>

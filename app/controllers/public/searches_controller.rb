@@ -25,6 +25,10 @@ class Public::SearchesController < ApplicationController
         when 'old'
           @creates = Create.all.order(created_at: :ASC)
         when 'likes'
+
+          #favorites = Favorite.group(:create_id).order(Arel.sql('count(create_id) desc')).pluck(:create_id)
+          #@creates = Create.find(favorites)
+
           @creates = Create.find(Favorite.group(:create_id).order(Arel.sql('count(create_id) desc')).pluck(:create_id))
         when 'dislikes'
           @creates = Create.find(Favorite.group(:create_id).order(Arel.sql('count(create_id) asc')).pluck(:create_id))

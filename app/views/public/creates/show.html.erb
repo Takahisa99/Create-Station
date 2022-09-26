@@ -1,7 +1,7 @@
 
 <div class='container'>
   <div class=“row”>
-      <!--作品名と画像-->
+      <%#--作品名と画像--%>
        <h2 class="mt-4"><strong><%= @create.name %></strong></h2><br>
       <div class="row">
         <div class="col-md-8 offset-md-1">
@@ -74,12 +74,12 @@
         <div class="row">
           <div class="col">
               <div class="col-4">
-<!--ログインしているユーザーのみ表示-->
+<%#--ログインしているユーザーのみ表示-%>
             <% if @create.user == current_user %>
                <%= link_to "編集", edit_public_create_path(@create), class:"btn btn-success btn-block" %>
                <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger btn-block" %>
                <%= link_to "戻る", public_user_path(current_user), class:"btn btn-primary btn-block" %>
-<!--ログインしていないユーザー-->
+<%#--ログインしていないユーザー--%>
             <% else @create.user %>
                  <%= link_to "戻る", public_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", public_user_path(@user), class:"btn btn-success btn-block" %>
@@ -89,7 +89,7 @@
         </div>
       </div><br>
 
-<!--いいね機能-->
+<%#--いいね機能--%>
    <% if user_signed_in? && !current_user.is_guest %>
    <div class="container-fluid">
          <div class=“row”>
@@ -102,7 +102,7 @@
          </div>
     </div>
 
-<!--コメント機能-->
+<%#--コメント機能--%>
   <div>
      <div class='container'>
       <div class=“row”>

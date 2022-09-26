@@ -43,7 +43,7 @@
                 <div class="col">
                   <%= create_comment.comment %>
                 </div>
-          <!--ログインしているユーザーのみ表示-->
+          <%# ログインしているユーザーのみ表示 %>
                 <div class="col">
                     <%= link_to "削除", admin_create_create_comment_path(create, create_comment), method: :delete, data: {confirm: "本当に消しますか？"},  class: "btn btn-danger pull-right", remote: true  %>
                 </div>

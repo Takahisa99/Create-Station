@@ -15,7 +15,7 @@
 
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
+  <%#--検索対象モデルがUserの時 -%>
   <% if @range == "User" %>
     <tbody>
       　<tr>
@@ -40,7 +40,7 @@
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがCreateの時) -->
+    <%#--検索対象モデルがUserではない時(= 検索対象モデルがCreateの時) --%>
     <tbody>
         <tr>
          <th>作品</th>
