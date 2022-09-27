@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'relationships/followings'
+  get 'relationships/followers'
   devise_for :users, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
