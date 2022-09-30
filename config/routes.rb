@@ -32,9 +32,12 @@ Rails.application.routes.draw do
       member do
         get :favorites
       end
-
+       resource :relationships, only: [:create, :destroy]
+          get 'followings' => 'relationships#followings', as: 'followings'
+          get 'followers' => 'relationships#followers', as: 'followers'
       # get "users/:id/favorites" => "users#favorites"
     end
+
     resources :creates, only:[:index, :new, :show, :create, :edit, :update, :destroy] do
      resources :create_comments, only: [:create, :destroy ]
      resources :favorites, only:[:create, :destroy, :index ]

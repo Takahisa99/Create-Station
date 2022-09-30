@@ -61,7 +61,9 @@
 
         <% if @user == current_user %>
           <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(current_user.id),class:"btn btn-outline-info" %></strong></h4>
+          <%= render 'public/relationships/relationships', user: @user %>
         <% else %>
+
            <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(@user),class:"btn btn-outline-info" %></strong></h4>
           <div><%= link_to "ユーザー一覧へ", public_users_path, class:"btn btn-success btn-block" %></div>
         <% end %>
