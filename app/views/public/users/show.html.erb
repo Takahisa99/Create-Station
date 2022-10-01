@@ -61,10 +61,12 @@
 
         <% if @user == current_user %>
           <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(current_user.id),class:"btn btn-outline-info" %></strong></h4>
-          <%= render 'public/relationships/relationships', user: @user %>
+          <%= link_to "フォロー一覧", public_user_followings_path(@user), class:"btn btn-outline-success" %><br>
+          <%= link_to "フォローワー一覧", public_user_followers_path(@user), class:"btn btn-outline-info" %>
         <% else %>
 
            <h4 class="my-3 ml-3"><strong><%=link_to"いいね一覧",favorites_public_user_path(@user),class:"btn btn-outline-info" %></strong></h4>
+          <div><%= render 'public/relationships/relationships', user: @user %></div><br>
           <div><%= link_to "ユーザー一覧へ", public_users_path, class:"btn btn-success btn-block" %></div>
         <% end %>
 
