@@ -8,6 +8,8 @@ class Create < ApplicationRecord
   has_many :create_comments, dependent: :destroy
 #いいね機能
   has_many :favorites, dependent: :destroy
+#閲覧数
+  has_many :view_counts, dependent: :destroy
 
 
   validates :name, presence:true

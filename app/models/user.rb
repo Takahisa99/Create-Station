@@ -13,6 +13,8 @@ class User < ApplicationRecord
   #コメント機能
   has_many :create_comments, dependent: :destroy
 
+ #閲覧数
+  has_many :view_counts, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :email, presence: true
@@ -57,6 +59,7 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+
 
 
     #フォロー機能

@@ -13,6 +13,7 @@ class Public::CreatesController < ApplicationController
     @create = Create.new
     @total_creates = Create.count
 
+
   end
 
 #作品詳細
@@ -26,6 +27,12 @@ class Public::CreatesController < ApplicationController
     @create_comment = CreateComment.new
     #@user = @create.user
     @user = User.find(@create.user_id)
+    #閲覧数
+    @create_detail = Create.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, create_id: @create_detail.id)
+      current_user.view_counts.create(create_id: @create_detail.id)
+    end
+
   end
 
 #新規投稿

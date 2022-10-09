@@ -79,10 +79,12 @@
                <%= link_to "編集", edit_public_create_path(@create), class:"btn btn-success btn-block" %>
                <%= link_to "削除", public_create_path(@create), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger btn-block" %>
                <%= link_to "戻る", public_user_path(current_user), class:"btn btn-primary btn-block" %>
+               <div class="view-count">👀数: <%= @create_detail.view_counts.count %></div>
 <%#--ログインしていないユーザー--%>
             <% else @create.user %>
                  <%= link_to "戻る", public_creates_path, class:"btn btn-primary btn-block" %>
                  <%= link_to "ユーザーの情報", public_user_path(@user), class:"btn btn-success btn-block" %>
+                 <div class="view-count">👀数: <%= @create_detail.view_counts.count %></div>
             <% end %>
               </div>
           </div>
