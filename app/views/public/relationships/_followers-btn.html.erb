@@ -1,0 +1,18 @@
+
+          <div class="container overflow-hidden">
+            <div class="row gx-5">
+              <div class="col">
+               <%= link_to public_user_followings_path(user), class:"btn btn-outline-success" do %>
+                  <span>フォロー一覧</span>
+               <% end %>
+              </div>
+            </div>
+
+            <div class="row gx-5">
+              <div class="col">
+               <%= link_to public_user_followers_path(user), class:"btn btn-outline-info" do %>
+                <span>フォロワー一覧</span>
+                <% end %>
+              </div>
+            </div>
+         </div>
