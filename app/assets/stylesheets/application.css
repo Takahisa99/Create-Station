@@ -13,7 +13,11 @@
  *= require_tree .
  *= require_self
  */
+   .main-container{
+        background-image: url("/images/mokuzai.jpg");
+        background-size: cover;
 
+   }
 
     /*ページネーション自体のデザイン*/
     .pagination>li>a {
